@@ -12,7 +12,8 @@ class produit {
        console.log(`djfhewf${this.name}`);
     }
 }
-while(1){
+var quit = 1; 
+while(quit){
     console.log("=============== menu ================");
     console.log("1. Ajouter un produit.");
     console.log("2. Afficher tous les produits.");
@@ -36,7 +37,8 @@ while(1){
             }
         case 2:
             console.log(addproduct());
-        case 5
+        case 5:
+            quit = 0;
     }
 
 }
