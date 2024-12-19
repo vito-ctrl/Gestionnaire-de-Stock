@@ -1,6 +1,6 @@
 const prompt = require('prompt-sync')();
 
-class produit {
+class product {
     constructor(id, name, description, quantite, prix){
         this.id = id;
         this.name = name;
@@ -8,11 +8,29 @@ class produit {
         this.quantite = quantite;
         this.prix = prix;
     }
-    great(){
-       console.log(`djfhewf${this.name}`);
-    }
 }
-var quit = 1; 
+
+let products = [];
+
+function addProduct(){
+        const id = products.length + 1;
+        const name = prompt("enter product name : ");
+        const description = prompt("enter product description : ");
+        const quantite = parseInt(prompt("enter product quantite : "));
+        const prix = parseFloat(prompt("enter product prix : "));
+        const newProduct = new product(id , name, description, quantite, prix);
+        products.push(newProduct);
+        console.log("product added succefuly");
+}
+function  listProducts(){
+    if (products.length == 0){
+        console.log("there is no product");
+        return;
+    }
+    console.log("========= all products ========");
+
+}
+let quit = true; 
 while(quit){
     console.log("=============== menu ================");
     console.log("1. Ajouter un produit.");
@@ -21,24 +39,21 @@ while(quit){
     console.log("4. Supprimer un produit.");
     console.log("5. Quitter.");
     console.log("=====================================");
-
-    var chois = prompt("enter you chois : ");
+    
+    var chois = parseInt(prompt("enter you chois : "));
     switch(chois){
         case 1:
-            function addproduct(){
-                for(let i = 0; chois == 1; i++){
-                    const id = console.log(`id = ${i + 1}`);
-                    const name = prompt("enter product name : ");
-                    const description = prompt("enter product description : ");
-                    const quantite = prompt("enter product quantite : ");
-                    const prix = prompt("enter product prix : ");
-                    return new produit(id , name, description, quantite, prix);
-                }
-            }
+            addProduct();
+            break;
         case 2:
             console.log(addproduct());
+            break;
         case 5:
-            quit = 0;
+            quit = false;
+            break;
+
+        // default:
+            // console.log("sf rah salina");
     }
 
 }
