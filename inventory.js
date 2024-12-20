@@ -1,16 +1,8 @@
 const prompt = require('prompt-sync')();
+const {product} = require("./Product");
+const fs = require('fs');
 
-// classe for product 
-
-class product {
-    constructor(id, name, description, quantite, prix){
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.quantite = quantite;
-        this.prix = prix;
-    }
-}
+const product_file = 'data.json';
 
 // array to store products
 let products = [];
@@ -19,22 +11,30 @@ let products = [];
 function addProduct(){
         console.log("\n======== add product ===========\n");
         const id = products.length + 1;
+
+        // ask use for product info
         const name = prompt("enter product name : ");
         const description = prompt("enter product description : ");
         const quantite = parseInt(prompt("enter product quantite : "));
         const prix = parseFloat(prompt("enter product prix : "));
         console.log("\n===================================");
         const newProduct = new product(id , name, description, quantite, prix);
+
+        // stock the product
         products.push(newProduct);
         console.log("product added succefuly\n");
 }
 
 // function that list products
 function  listProducts(){
+
+    // check if theres is no produt
     if (products.length == 0){
         console.log("\nthere is no product\n");
         return;
     }
+
+    // product displaying
     console.log("========= all products ========");
     products.forEach(element => {
         console.log(`id : ${element.id}`);
@@ -88,13 +88,15 @@ function updateProduct(){
 
 // function that delete project
 function deleteProduct(){
-    // 
+    // list all product
     listProducts();
-
+    // enter product id you want to delete
     const deleteId  = parseInt(prompt("enter deleted product id : "));
 
+    // find the index of the product
     const productToDelete = deleteId - 1;
-
+    
+    // check if ther is no product
     if(productToDelete === -1){
         console.log("product not found");
         return;
@@ -113,8 +115,8 @@ function deleteProduct(){
     }else{
         console.log("deletion is cansled");
     }
-
 }
+
 let quit = true; 
 while(quit){
     console.log("=============== menu ================");
