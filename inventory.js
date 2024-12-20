@@ -1,8 +1,15 @@
 const prompt = require('prompt-sync')();
 const {product} = require("./Product");
+
+// fs module to handel operation
 const fs = require('fs');
 
+// 
 const product_file = 'data.json';
+
+function saveProduct(){
+    
+}
 
 // array to store products
 let products = [];
