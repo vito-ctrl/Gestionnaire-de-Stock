@@ -103,10 +103,16 @@ function deleteProduct(){
     const sure = prompt("are you sure you want to delete product (yes / no)");
 
     if(sure.toLowerCase() === 'yes'){
-        
+
+        products.splice(productToDelete, 1);
+
+        products.forEach((product, index) => {
+            product.id = index + 1;
+        });
+        console.log("product deleted succesfuly");
+    }else{
+        console.log("deletion is cansled");
     }
-
-
 
 }
 let quit = true; 
